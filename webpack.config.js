@@ -1,11 +1,11 @@
-const publicDir = __dirname + "/public"
-
 module.exports = {
   entry: './src/index.js',
   output: {
-    path: publicDir,
+    path: __dirname,
+    publicPath: '/',
     filename: 'bundle.js',
   },
+  mode: 'none',
   module: {
     rules: [
       {

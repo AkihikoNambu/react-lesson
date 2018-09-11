@@ -1,0 +1,163 @@
+body {
+  margin: 0;
+  padding: 0;
+  font-family: "Avenir Next";
+}
+
+ul {
+  margin: 0;
+}
+
+li {
+  list-style: none;
+}
+
+.header {
+  background-color: #26d0c9;
+  color: #fff;
+  height: 90px;
+}
+
+.header-logo {
+  float: left;
+  font-size: 36px;
+  padding: 20px 40px;
+}
+
+.header-lesson-count {
+  float: right;
+  padding: 32px 24px;
+}
+
+.main {
+  padding: 100px 80px;
+}
+
+.copy-container h1 {
+  font-size: 140px;
+}
+
+.copy-container h2 {
+  font-size: 60px;
+}
+
+.copy-container span {
+  color: #ff4a4a;
+}
+
+.contents {
+  height: 500px;
+  margin-top: 100px;
+}
+
+.section-title {
+  border-bottom: 2px solid #dee7ec;
+  font-size: 28px;
+  padding-bottom: 15px;
+  margin-bottom: 50px;
+}
+
+.contents-item {
+  float: left;
+  margin-right: 40px;
+}
+
+.contents-item p {
+  font-size: 24px;
+  margin-top: 30px;
+}
+
+.contact-form {
+  padding-top: 100px;
+  clear: both;
+}
+
+/* フォーム */
+input{
+  width:400px;
+  margin-top:10px;
+  margin-bottom:30px;
+  padding:20px;
+  font-size:18px;
+  border: 1px solid #dee7ec;
+}
+
+textarea{
+  width:400px;
+  margin-top:10px;
+  margin-bottom:30px;
+  padding:20px;
+  font-size:18px;
+  border: 1px solid #dee7ec;
+}
+
+input[type="submit"]:disabled {
+  background: #ccc;
+}
+
+.contact-submit{
+  font-family: 'Dosis', sans-serif;
+  font-size: 20px;
+  font-weight: 600;
+  background: #5983ff;
+  color: white;
+  text-shadow: 0 1px 0 rgba(0, 0, 0, 0.1);
+  transition: all .3s;
+  padding: 12px 26px;
+}
+
+/*モーダル*/
+.modal-wrapper {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background-color: rgba(0, 0, 0, 0.6);
+  z-index: 100;
+}
+
+.modal {
+  position: absolute;
+  top: 20%;
+  left: 34%;
+  background-color: #e6ecf0;
+  padding: 20px 0 40px;
+  border-radius: 10px;
+  width: 400px;
+  height: 320px;
+  text-align: center;
+}
+
+.modal-close {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  color: rgba(128, 128, 128, 0.46);
+  cursor: pointer;
+}
+
+.modal-description {
+  width: 80%;
+  margin: 0 auto;
+}
+
+.footer {
+  background-color: #2f5167;
+  color: #fff;
+  height: 120px;
+  padding: 40px;
+}
+
+.footer-logo {
+  float: left;
+  font-size: 32px;
+}
+
+.footer-list {
+  float: right;
+}
+
+.footer-list li {
+  padding-bottom: 20px;
+}
