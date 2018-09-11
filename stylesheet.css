@@ -73,7 +73,7 @@ li {
 }
 
 /* フォーム */
-input{
+input {
   width:400px;
   margin-top:10px;
   margin-bottom:30px;
@@ -82,7 +82,7 @@ input{
   border: 1px solid #dee7ec;
 }
 
-textarea{
+textarea {
   width:400px;
   margin-top:10px;
   margin-bottom:30px;
@@ -91,19 +91,24 @@ textarea{
   border: 1px solid #dee7ec;
 }
 
-input[type="submit"]:disabled {
-  background: #ccc;
+.error-message {
+  color: #ff0000;
 }
 
-.contact-submit{
+.contact-submit {
+  display: block;
   font-family: 'Dosis', sans-serif;
   font-size: 20px;
   font-weight: 600;
   background: #5983ff;
-  color: white;
+  color: #fff;
   text-shadow: 0 1px 0 rgba(0, 0, 0, 0.1);
   transition: all .3s;
   padding: 12px 26px;
+}
+
+.contact-submit-disabled {
+  background: #ccc;
 }
 
 /*モーダル*/

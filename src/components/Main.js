@@ -92,10 +92,19 @@ export default class Main extends React.Component {
 
   render() {
     const {lessons} = this.props
-    const {isModalOpen, openLesson} = this.state
+    const {
+      formSubmitted,
+      emailError,
+      email,
+      inquiryError,
+      inquiry,
+      formValid,
+      isModalOpen,
+      openLesson,
+    } = this.state
 
     let formJSX = null
-    if (this.state.formSubmitted) {
+    if (formSubmitted) {
       formJSX = (
         <div>ご回答ありがとうございました</div>
       )
@@ -104,27 +113,26 @@ export default class Main extends React.Component {
         <form onSubmit={e => this.handleSubmit(e)}>
           <p>メールアドレス（必須）</p>
           <div className='error-message'>
-            { this.state.emailError }
+            {emailError}
           </div>
           <input
             type="email"
-            value={this.state.email}
+            value={email}
             onChange={e => this.handleEmailChange(e.target.value)}
           />
-
           <p>お問い合わせ内容（必須）</p>
           <div className='error-message'>
-            { this.state.inquiryError }
+            {inquiryError}
           </div>
           <textarea
-          type="text" value={this.state.inquiry}
-          onChange={e => this.handleInquiryChange(e.target.value)} />
-
+            type="text" value={inquiry}
+            onChange={e => this.handleInquiryChange(e.target.value)}
+          />
           <p>※必須項目は必ずご入力ください</p>
           <input
-            className="contact-submit"
+            className={`contact-submit ${!formValid ? 'contact-submit-disabled' : ''}`}
             type="submit"
-            disabled={!this.state.formValid}
+            disabled={!formValid}
             value="送信"
           />
         </form>
@@ -156,7 +164,6 @@ export default class Main extends React.Component {
             handleClickClose={this.handleClickClose.bind(this)}
           />
         }
-
         <div className="contact-form">
           <h3 className="section-title">お問い合わせ</h3>
           {formJSX}
