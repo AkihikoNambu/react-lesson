@@ -12,9 +12,6 @@ export default class Main extends React.Component {
       inquiry: '',
       emailError: '',
       inquiryError: '',
-      emailValid: false,
-      inquiryValid: false,
-      formValid: false,
       formSubmitted: false,
     }
   }
@@ -31,56 +28,29 @@ export default class Main extends React.Component {
   }
 
   handleEmailChange(email) {
-    const {inquiryValid} = this.state
-    if (email === "") {
-      const emailValid = false
-      const formValid = emailValid && inquiryValid
+    if (email === '') {
       this.setState({
         email: email,
         emailError: '記入必須項目です',
-        emailValid: false,
-        formValid: formValid,
-      })
-    } else if (!email.match(/@/)){
-      const emailValid = false
-      const formValid = emailValid && inquiryValid
-      this.setState({
-        email: email,
-        emailError: "正しいメールアドレスの形式ではありません",
-        emailValid: false,
-        formValid: formValid,
       })
     } else {
-      const emailValid = true
-      const formValid = emailValid && inquiryValid
       this.setState({
         email: email,
-        emailError: null,
-        emailValid: true,
-        formValid: formValid,
+        emailError: '',
       })
     }
   }
 
   handleInquiryChange(inquiry) {
-    const {emailValid} = this.state
-    if (inquiry == ""){
-      const inquiryValid = false
-      const formValid = emailValid && inquiryValid
+    if (inquiry === '') {
       this.setState({
         inquiry: inquiry,
         inquiryError: '記入必須項目です',
-        inquValid: false,
-        formValid: formValid,
       })
     } else {
-      const inquiryValid = true
-      const formValid = emailValid && inquiryValid
       this.setState({
         inquiry: inquiry,
-        inquiryError: null,
-        inquiryValid: true,
-        formValid: formValid,
+        inquiryError: '',
       })
     }
   }
@@ -88,6 +58,16 @@ export default class Main extends React.Component {
   handleSubmit(e) {
     e.preventDefault();
     this.setState({formSubmitted: true})
+  }
+
+  isFormValid() {
+    const {
+      email,
+      inquiry,
+      emailError,
+      inquiryError,
+    } = this.state
+    return email !== '' && inquiry !== '' && emailError === '' && inquiryError === ''
   }
 
   render() {
@@ -98,10 +78,11 @@ export default class Main extends React.Component {
       email,
       inquiryError,
       inquiry,
-      formValid,
       isModalOpen,
       openLesson,
     } = this.state
+
+    const isFormValid = this.isFormValid()
 
     let formJSX = null
     if (formSubmitted) {
@@ -116,7 +97,6 @@ export default class Main extends React.Component {
             {emailError}
           </div>
           <input
-            type="email"
             value={email}
             onChange={e => this.handleEmailChange(e.target.value)}
           />
@@ -130,9 +110,9 @@ export default class Main extends React.Component {
           />
           <p>※必須項目は必ずご入力ください</p>
           <input
-            className={`contact-submit ${!formValid ? 'contact-submit-disabled' : ''}`}
+            className={`contact-submit ${!isFormValid ? 'contact-submit-disabled' : ''}`}
             type="submit"
-            disabled={!formValid}
+            disabled={!isFormValid}
             value="送信"
           />
         </form>
