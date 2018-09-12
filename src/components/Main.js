@@ -57,13 +57,12 @@ export default class Main extends React.Component {
       )
     } else {
       formJSX = (
-        <form onSubmit={e => this.handleSubmit(e)} noValidate>
+        <form onSubmit={e => this.handleSubmit(e)} >
           <p>メールアドレス</p>
           {email === '' && (
             <div className='error-message'>※ 入力必須項目です</div>
           )}
           <input
-            type="email"
             value={email}
             onChange={e => this.handleEmailChange(e.target.value)}
           />
