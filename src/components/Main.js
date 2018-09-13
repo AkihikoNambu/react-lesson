@@ -105,15 +105,15 @@ export default class Main extends React.Component {
             {inquiryError}
           </div>
           <textarea
-            type="text" value={inquiry}
+            type='text' value={inquiry}
             onChange={e => this.handleInquiryChange(e.target.value)}
           />
           <p>※必須項目は必ずご入力ください</p>
           <input
             className={`contact-submit ${!isFormValid ? 'contact-submit-disabled' : ''}`}
-            type="submit"
+            type='submit'
             disabled={!isFormValid}
-            value="送信"
+            value='送信'
           />
         </form>
       )
@@ -137,15 +137,14 @@ export default class Main extends React.Component {
             )
           })}
         </div>
-        {/* NOTE: 条件分岐なにでやるか */}
         {isModalOpen && openLesson &&
           <LessonModal
             lesson={openLesson}
             handleClickClose={this.handleClickClose.bind(this)}
           />
         }
-        <div className="contact-form">
-          <h3 className="section-title">お問い合わせ</h3>
+        <div className='contact-form'>
+          <h3 className='section-title'>お問い合わせ</h3>
           {formJSX}
         </div>
       </div>
