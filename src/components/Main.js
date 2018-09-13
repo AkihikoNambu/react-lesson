@@ -94,7 +94,7 @@ export default class Main extends React.Component {
   handleInquiryFocus(event) {
     const {inquiry} = this.state
     if (inquiry === '') {
-      this.setState({emailError: '記入必須項目です'})
+      this.setState({inquiryError: '記入必須項目です'})
     }
   }
 
