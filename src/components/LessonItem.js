@@ -6,11 +6,12 @@ export default class LessonItem extends React.Component {
       lesson,
       handleClickImage,
     } = this.props
+
     return(
       <div className='contents-item'>
         <img
           src={lesson.imageUrl}
-          onClick={handleClickImage.bind(this, lesson)}
+          onClick={event => handleClickImage(event, lesson)}
         />
         <p>{lesson.name}</p>
       </div>

@@ -43,18 +43,26 @@ export default class Main extends React.Component {
     }
   }
 
-  handleClickImage(lesson) {
+  handleClickImage(event, lesson) {
     this.setState({
       isModalOpen: true,
       openLesson: lesson,
     })
   }
 
-  handleClickClose() {
+  handleClickClose(event) {
     this.setState({isModalOpen: false})
   }
 
-  handleEmailChange(email) {
+  handleEmailFocus(event) {
+    const {email} = this.state
+    if (email === '') {
+      this.setState({emailError: '記入必須項目です'})
+    }
+  }
+
+  handleEmailChange(event) {
+    const email = event.target.value
     if (email === '') {
       this.setState({
         email: email,
@@ -68,7 +76,8 @@ export default class Main extends React.Component {
     }
   }
 
-  handleInquiryChange(inquiry) {
+  handleInquiryChange(event) {
+    const inquiry = event.target.value
     if (inquiry === '') {
       this.setState({
         inquiry: inquiry,
@@ -82,8 +91,15 @@ export default class Main extends React.Component {
     }
   }
 
-  handleSubmit(e) {
-    e.preventDefault();
+  handleInquiryFocus(event) {
+    const {inquiry} = this.state
+    if (inquiry === '') {
+      this.setState({emailError: '記入必須項目です'})
+    }
+  }
+
+  handleSubmit(event) {
+    event.preventDefault();
     this.setState({formSubmitted: true})
   }
 
@@ -117,22 +133,21 @@ export default class Main extends React.Component {
       )
     } else {
       formJSX = (
-        <form onSubmit={e => this.handleSubmit(e)}>
+        <form onSubmit={event => this.handleSubmit(event)}>
           <p>メールアドレス（必須）</p>
-          <div className='error-message'>
-            {emailError}
-          </div>
+          <div className='error-message'>{emailError}</div>
           <input
             value={email}
-            onChange={e => this.handleEmailChange(e.target.value)}
+            onFocus={event => this.handleEmailFocus(event)}
+            onChange={event => this.handleEmailChange(event)}
           />
           <p>お問い合わせ内容（必須）</p>
-          <div className='error-message'>
-            {inquiryError}
-          </div>
+          <div className='error-message'>{inquiryError}</div>
           <textarea
-            type='text' value={inquiry}
-            onChange={e => this.handleInquiryChange(e.target.value)}
+            type='text'
+            value={inquiry}
+            onFocus={event => this.handleInquiryFocus(event)}
+            onChange={event => this.handleInquiryChange(event)}
           />
           <p>※必須項目は必ずご入力ください</p>
           <input
@@ -158,7 +173,7 @@ export default class Main extends React.Component {
               <LessonItem
                 key={lesson.id}
                 lesson={lesson}
-                handleClickImage={this.handleClickImage.bind(this)}
+                handleClickImage={event => this.handleClickImage(event, lesson)}
               />
             )
           })}
@@ -166,7 +181,7 @@ export default class Main extends React.Component {
         {isModalOpen && (
           <LessonModal
             lesson={openLesson}
-            handleClickClose={this.handleClickClose.bind(this)}
+            handleClickClose={event => this.handleClickClose(event)}
           />
         )}
         <div className='contact-form'>
