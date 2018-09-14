@@ -83,8 +83,7 @@ export default class ContactForm extends React.Component {
     const isFormValid = this.isFormValid()
 
     return (
-      <div className='contact-form'>
-        <h3 className='section-title'>お問い合わせ</h3>
+      <div>
         {formSubmitted ? (
           <div>ご回答ありがとうございました</div>
         ) : (
