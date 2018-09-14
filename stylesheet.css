@@ -24,13 +24,45 @@ li {
   padding: 20px 40px;
 }
 
-.header-lesson-count {
+.header-right {
   float: right;
-  padding: 32px 24px;
+}
+
+.header-user-info {
+  float: left;
+}
+
+.user-image {
+  float: left;
+  height: 50px;
+  width: 50px;
+  padding: 20px 0;
+}
+
+.user-name {
+  display: inline;
+  float: left;
+  font-size: 18px;
+  padding: 32px 20px;
+}
+
+.header-login-logout {
+  float: left;
+  background-color: rgba(255, 255, 255, 0.3);
+  line-height: 90px;
+  padding: 0 25px;
+  margin-right: 40px;
+  color: white;
+  display: block;
+  cursor: pointer;
 }
 
 .main {
   padding: 100px 80px;
+}
+
+.copy-container {
+  margin-bottom: 100px;
 }
 
 .copy-container h1 {
@@ -43,6 +75,17 @@ li {
 
 .copy-container span {
   color: #ff4a4a;
+}
+
+.signup-btn {
+  color: white;
+  border-radius: 4px;
+  padding: 15px 40px;
+  margin: 0 auto;
+  width: 120px;
+  text-align: center;
+  background-color: #26d0c9;
+  cursor: pointer;
 }
 
 .contents {
