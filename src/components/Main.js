@@ -4,12 +4,16 @@ import ContactForm from './ContactForm'
 
 export default class Main extends React.Component {
   render() {
+    const {user} = this.props
     return(
       <div className='main'>
         <div className='copy-container'>
           <h1>HELLO WORLD<span>.</span></h1>
           <h2>プログラミングの世界へようこそ</h2>
         </div>
+        {!user && (
+          <div className='signup-btn'>新規登録する</div>
+        )}
         <div className='contents'>
           <h3 className='section-title'>学べるレッスン</h3>
           <Lessons />
