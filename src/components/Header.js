@@ -2,8 +2,10 @@ import React from 'react'
 
 export default class Header extends React.Component {
   render() {
-    const {user} = this.props
-    const {handleLogout} = this.props
+    const {
+      user,
+      handleLogout,
+    } = this.props
 
     return(
       <div className='header'>
