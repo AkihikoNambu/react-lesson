@@ -1,6 +1,6 @@
-import React from 'react'
-import LessonItem from './LessonItem'
-import LessonModal from './LessonModal'
+import React from 'react';
+import LessonItem from './LessonItem';
+import LessonModal from './LessonModal';
 
 const lessons = [
   {
@@ -27,11 +27,11 @@ const lessons = [
     imageUrl: 'https://s3-ap-northeast-1.amazonaws.com/progate/shared/images/lesson/html/study/swift.svg',
     description: 'SwiftはiPhoneアプリを作るための言語です。 Swiftを学んでiPhoneアプリを作る力を身につけましょう！',
   },
-]
+];
 
 export default class Main extends React.Component {
   constructor(props) {
-    super(props)
+    super(props);
     this.state = {
       isModalOpen: false,
       openLesson: null,
@@ -40,67 +40,67 @@ export default class Main extends React.Component {
       emailError: '',
       inquiryError: '',
       formSubmitted: false,
-    }
+    };
   }
 
   handleClickImage(event, lesson) {
     this.setState({
       isModalOpen: true,
       openLesson: lesson,
-    })
+    });
   }
 
   handleClickClose(event) {
-    this.setState({isModalOpen: false})
+    this.setState({isModalOpen: false});
   }
 
   handleEmailFocus(event) {
-    const {email} = this.state
+    const {email} = this.state;
     if (email === '') {
-      this.setState({emailError: '記入必須項目です'})
+      this.setState({emailError: '記入必須項目です'});
     }
   }
 
   handleEmailChange(event) {
-    const email = event.target.value
+    const email = event.target.value;
     if (email === '') {
       this.setState({
         email: email,
         emailError: '記入必須項目です',
-      })
+      });
     } else {
       this.setState({
         email: email,
         emailError: '',
-      })
+      });
     }
   }
 
   handleInquiryChange(event) {
-    const inquiry = event.target.value
+    const inquiry = event.target.value;
     if (inquiry === '') {
       this.setState({
         inquiry: inquiry,
         inquiryError: '記入必須項目です',
-      })
+      });
     } else {
       this.setState({
         inquiry: inquiry,
         inquiryError: '',
-      })
+      });
     }
   }
 
   handleInquiryFocus(event) {
-    const {inquiry} = this.state
+    const {inquiry} = this.state;
     if (inquiry === '') {
-      this.setState({inquiryError: '記入必須項目です'})
+      this.setState({inquiryError: '記入必須項目です'});
     }
   }
 
   handleSubmit(event) {
     event.preventDefault();
-    this.setState({formSubmitted: true})
+    this.setState({formSubmitted: true});
   }
 
   isFormValid() {
@@ -109,8 +109,8 @@ export default class Main extends React.Component {
       inquiry,
       emailError,
       inquiryError,
-    } = this.state
-    return email !== '' && inquiry !== '' && emailError === '' && inquiryError === ''
+    } = this.state;
+    return email !== '' && inquiry !== '' && emailError === '' && inquiryError === '';
   }
 
   render() {
@@ -122,15 +122,15 @@ export default class Main extends React.Component {
       inquiry,
       isModalOpen,
       openLesson,
-    } = this.state
+    } = this.state;
 
-    const isFormValid = this.isFormValid()
+    const isFormValid = this.isFormValid();
 
-    let formJSX = null
+    let formJSX = null;
     if (formSubmitted) {
       formJSX = (
         <div>ご回答ありがとうございました</div>
-      )
+      );
     } else {
       formJSX = (
         <form onSubmit={event => this.handleSubmit(event)}>
@@ -157,7 +157,7 @@ export default class Main extends React.Component {
             value='送信'
           />
         </form>
-      )
+      );
     }
 
     return(
@@ -175,7 +175,7 @@ export default class Main extends React.Component {
                 lesson={lesson}
                 handleClickImage={event => this.handleClickImage(event, lesson)}
               />
-            )
+            );
           })}
         </div>
         {isModalOpen && (
@@ -189,6 +189,6 @@ export default class Main extends React.Component {
           {formJSX}
         </div>
       </div>
-    )
+    );
   }
 }
