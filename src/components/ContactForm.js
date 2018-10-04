@@ -13,7 +13,7 @@ class ContactForm extends React.Component {
   }
 
   handleEmailFocus(event) {
-    const email = event.target.value
+    const email = event.target.value;
     if (email === '') {
       this.setState({emailError: '記入必須項目です'});
     }
@@ -35,7 +35,7 @@ class ContactForm extends React.Component {
   }
 
   handleInquiryFocus(event) {
-    const inquiry = event.target.value
+    const inquiry = event.target.value;
     if (inquiry === '') {
       this.setState({inquiryError: '記入必須項目です'});
     }
@@ -112,7 +112,7 @@ class ContactForm extends React.Component {
           </form>
         )}
       </div>
-    )
+    );
   }
 }
 
