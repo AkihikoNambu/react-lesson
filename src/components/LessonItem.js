@@ -1,11 +1,11 @@
-import React from 'react'
+import React from 'react';
 
 export default class LessonItem extends React.Component {
   render() {
     const {
       lesson,
       handleClickImage,
-    } = this.props
+    } = this.props;
 
     return(
       <div className='contents-item'>
@@ -15,6 +15,6 @@ export default class LessonItem extends React.Component {
         />
         <p>{lesson.name}</p>
       </div>
-    )
+    );
   }
 }
