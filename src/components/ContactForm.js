@@ -85,7 +85,15 @@ class ContactForm extends React.Component {
     return(
       <div>
         {formSubmitted ? (
-          <div>ご回答ありがとうございました</div>
+          <div>
+            <div>お問い合わせありがとうございました。</div>
+            <div className='send-content-wrapper'>
+              メールアドレス:
+              <div className='send-content'>{email}</div>
+              お問い合わせ内容:
+              <div className='send-content'>{inquiry}</div>
+            </div>
+          </div>
         ) : (
           <form onSubmit={event => this.handleSubmit(event)}>
             <p>メールアドレス（必須）</p>

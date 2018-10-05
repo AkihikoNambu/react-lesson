@@ -108,7 +108,19 @@ textarea {
 }
 
 .contact-submit-disabled {
-  background: #ccc;
+  background-color: #ccc;
+}
+
+.send-content-wrapper {
+  margin-top: 12px;
+  background-color: #f1f0f0;
+  padding: 24px;
+  border-radius: 2px;
+}
+
+.send-content {
+  margin-bottom: 12px;
+  word-wrap: break-word;
 }
 
 /*モーダル*/
