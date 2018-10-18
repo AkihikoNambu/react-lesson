@@ -14,13 +14,14 @@ class ContactForm extends React.Component {
 
   handleEmailChange(event) {
     const email = event.target.value;
-    this.setState({email: email});
     if (email === '') {
       this.setState({
+        email: email,
         emailError: true,
       });
     } else {
       this.setState({
+        email: email,
         emailError: false,
       });
     }
