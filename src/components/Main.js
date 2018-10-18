@@ -36,9 +36,7 @@ class Main extends React.Component {
         <div className='contents'>
           <h3 className='section-title'>学べるレッスン</h3>
           {lessons.map(lesson => {
-            return (
-              <Lesson lesson={lesson} />
-            );
+            return <Lesson lesson={lesson} />;
           })}
         </div>
         <div className='contact-form'>
