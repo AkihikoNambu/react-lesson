@@ -7,27 +7,27 @@ class Main extends React.Component {
     const lessons = [
       {
         name: 'HTML & CSS',
-        image: 'https://s3-ap-northeast-1.amazonaws.com/progate/shared/images/lesson/html/study/html.svg',
+        image: 'https://s3-ap-northeast-1.amazonaws.com/progate/shared/images/lesson/react/html.png',
         description: 'WEBページはHTML、CSSという言語によってその見た目が作られています。 実際にWEBページを作りながら学んでみましょう！',
       },
       {
-        name: 'PHP',
-        image: 'https://s3-ap-northeast-1.amazonaws.com/progate/shared/images/lesson/html/study/php.svg',
-        description: 'PHPを学べば、ユーザーからデータを受け取りそれを表示するなど、 実際のWEBサービスで必要な機能を作ることが出来ます。',
+        name: 'Saas',
+        image: 'https://s3-ap-northeast-1.amazonaws.com/progate/shared/images/lesson/react/sass.png',
+        description: 'SassはCSSをより便利に効率的にするための言語です。',
       },
       {
-        name: 'Ruby',
-        image: 'https://s3-ap-northeast-1.amazonaws.com/progate/shared/images/lesson/html/study/ruby.svg',
-        description: 'RubyはWEBアプリケーションの「システム」をつくるためのプログラミング言語です。',
+        name: 'JavaScript',
+        image: 'https://s3-ap-northeast-1.amazonaws.com/progate/shared/images/lesson/react/es6.png',
+        description: 'JavaScriptはフロントエンドだけでなく、サーバーサイドまで広い可能性を持つプログラミング言語です。',
       },
       {
-        name: 'Swift',
-        image: 'https://s3-ap-northeast-1.amazonaws.com/progate/shared/images/lesson/html/study/swift.svg',
-        description: 'SwiftはiPhoneアプリを作るための言語です。 Swiftを学んでiPhoneアプリを作る力を身につけましょう！',
+        name: 'React',
+        image: 'https://s3-ap-northeast-1.amazonaws.com/progate/shared/images/lesson/react/react.png',
+        description: 'Reactは、HTMLのように、サイトの見た目を作ることが出来るJavaScriptのライブラリです。',
       },
     ];
 
-    return(
+    return (
       <div className='main'>
         <div className='copy-container'>
           <h1>HELLO WORLD<span>.</span></h1>
@@ -35,15 +35,9 @@ class Main extends React.Component {
         </div>
         <div className='contents'>
           <h3 className='section-title'>学べるレッスン</h3>
-          {lessons.map(lesson => {
-            return (
-              <Lesson lesson={lesson} />
-            );
+          {lessons.map((lesson) => {
+            return <Lesson lesson={lesson} />
           })}
-        </div>
-        <div className='contact-form'>
-          <h3 className='section-title'>お問い合わせ</h3>
-          <ContactForm />
         </div>
       </div>
     );
