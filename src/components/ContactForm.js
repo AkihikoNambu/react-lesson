@@ -46,10 +46,10 @@ class ContactForm extends React.Component {
     }
   }
 
- // メソッドisFormInvalidを定義
- isFormInvalid() {
-   return this.state.emailError || this.state.inquiryError || this.state.email === '' || this.state.inquiry === ''
-}
+  // メソッドisFormInvalidを定義
+  isFormInvalid() {
+    return this.state.emailError || this.state.inquiryError || this.state.email === '' || this.state.inquiry === ''
+  }
 
   render() {
     let emailErrorText;

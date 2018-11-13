@@ -39,6 +39,10 @@ class Main extends React.Component {
             return <Lesson lesson={lesson} />
           })}
         </div>
+        <div className='contact-form'>
+          <h3 className='section-title'>お問い合わせ</h3>
+          <ContactForm />
+        </div>
       </div>
     );
   }
