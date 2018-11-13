@@ -1,4 +1,4 @@
-import React from 'react';
+import React from 'react'
 
 class ContactForm extends React.Component {
   constructor(props) {
@@ -6,38 +6,28 @@ class ContactForm extends React.Component {
     this.state = {
       email: '',
       inquiry: '',
-      emailError: '',
-      inquiryError: '',
+      emailError: false,
+      inquiryError: false,
       formSubmitted: false,
     };
   }
 
-  handleEmailFocus(event) {
-    const email = event.target.value;
-    if (email === '') {
-      this.setState({emailError: '記入必須項目です'});
-    }
+  handleSubmit(event) {
+    this.setState({formSubmitted: true});
   }
 
   handleEmailChange(event) {
-    const email = event.target.value;
+    const email = event.target.value
     if (email === '') {
       this.setState({
         email: email,
-        emailError: '記入必須項目です',
-      });
+        emailError: true,
+      })
     } else {
       this.setState({
         email: email,
-        emailError: '',
-      });
-    }
-  }
-
-  handleInquiryFocus(event) {
-    const inquiry = event.target.value;
-    if (inquiry === '') {
-      this.setState({inquiryError: '記入必須項目です'});
+        emailError: false,
+      })
     }
   }
 
@@ -46,80 +36,70 @@ class ContactForm extends React.Component {
     if (inquiry === '') {
       this.setState({
         inquiry: inquiry,
-        inquiryError: '記入必須項目です',
-      });
+        inquiryError: true,
+      })
     } else {
       this.setState({
         inquiry: inquiry,
-        inquiryError: '',
-      });
+        inquiryError: false,
+      })
     }
   }
 
-  handleSubmit(event) {
-    event.preventDefault();
-    this.setState({formSubmitted: true});
-  }
-
-  isFormValid() {
-    const {
-      email,
-      inquiry,
-      emailError,
-      inquiryError,
-    } = this.state;
-
-    return email !== '' && inquiry !== '' && emailError === '' && inquiryError === '';
-  }
+ // メソッドisFormInvalidを定義
+ isFormInvalid() {
+   return this.state.emailError || this.state.inquiryError || this.state.email === '' || this.state.inquiry === ''
+}
 
   render() {
-    const {
-      email,
-      inquiry,
-      emailError,
-      inquiryError,
-      formSubmitted,
-    } = this.state;
-    const isFormValid = this.isFormValid();
+    let emailErrorText;
+    if (this.state.emailError) {
+      emailErrorText = <div className='error-message'>入力必須項目です</div>;
+    }
+  　let inquiryErrorText;
+    if (this.state.inquiryError) {
+      inquiryErrorText = <div className='error-message'>入力必須項目です</div>;
+    }
+    // ここをconst isFormInvalid = this.state.emailError || this.state.inquiryError || this.state.email === '' || this.state.inquiry === '';から以下に変える
+    const isFormInvalid = this.isFormInvalid();
+    let submitButtonClassNames = '';
+    if (isFormInvalid) {
+      submitButtonClassNames = 'contact-submit contact-submit-disabled';
+    } else {
+      submitButtonClassNames = 'contact-submit';
+    }
+    let contactForm;
+    if (this.state.formSubmitted) {
+      contactForm = <div>お問い合わせありがとうございました。</div>;
+    } else {
+      contactForm = (
+        <form onSubmit={event => this.handleSubmit(event)}>
+          <p>メールアドレス（必須）</p>
+          {emailErrorText}
+          <input
+            value={this.state.email}
+            onChange={event => this.handleEmailChange(event)}
+          />
+          <p>お問い合わせ内容（必須）</p>
+          {inquiryErrorText}
+          <textarea
+            type='text'
+            value={this.state.inquiry}
+            onChange={(event) => this.handleInquiryChange(event)}
+          />
+          <p>※必須項目は必ずご入力ください</p>
+          <input
+            className={submitButtonClassNames}
+            type='submit'
+            value='送信'
+            disabled={isFormInvalid}
+          />
+        </form>
+      );
+    }
 
-    return(
-      <div>
-        {formSubmitted ? (
-          <div>
-            <div>お問い合わせありがとうございました。</div>
-            <div className='send-content-wrapper'>
-              メールアドレス:
-              <div className='send-content'>{email}</div>
-              お問い合わせ内容:
-              <div className='send-content'>{inquiry}</div>
-            </div>
-          </div>
-        ) : (
-          <form onSubmit={event => this.handleSubmit(event)}>
-            <p>メールアドレス（必須）</p>
-            <div className='error-message'>{emailError}</div>
-            <input
-              value={email}
-              onFocus={event => this.handleEmailFocus(event)}
-              onChange={event => this.handleEmailChange(event)}
-            />
-            <p>お問い合わせ内容（必須）</p>
-            <div className='error-message'>{inquiryError}</div>
-            <textarea
-              value={inquiry}
-              onFocus={event => this.handleInquiryFocus(event)}
-              onChange={event => this.handleInquiryChange(event)}
-            />
-            <p>※必須項目は必ずご入力ください</p>
-            <input
-              className={!isFormValid ? 'contact-submit contact-submit-disabled' : 'contact-submit'}
-              type='submit'
-              disabled={!isFormValid}
-              value='送信'
-            />
-          </form>
-        )}
-      </div>
+    return (
+      <div>{contactForm}</div>
     );
   }
 }

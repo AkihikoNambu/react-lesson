@@ -15,32 +15,32 @@ class Lesson extends React.Component {
   }
 
   render() {
-    const {isModalOpen} = this.state;
-    const {lesson} = this.props;
-
-    return(
-      <div>
-        <div className='contents-item'>
-          <img
-            src={lesson.image}
-            onClick={() => this.handleClickImage()}
-          />
-          <p>{lesson.name}</p>
-        </div>
-        {isModalOpen && (
-          <div className='modal-wrapper'>
-            <div className='modal'>
-              <i
-                className='modal-close fas fa-times'
-                onClick={() => this.handleClickClose()}
-              />
-              <div className='modal-description'>
-                <h2>{lesson.name}</h2>
-                <div>{lesson.description}</div>
-              </div>
+    const lesson = this.props.lesson;
+    let modal;
+    if (this.state.isModalOpen) {
+      modal = (
+        <div className='modal-wrapper'>
+          <div className='modal'>
+            <i className='modal-close fas fa-times'
+            onClick={() => this.handleClickClose()}
+            />
+            <div className='modal-description'>
+              <h2>{lesson.name}</h2>
+              <div>{lesson.description}</div>
             </div>
           </div>
-        )}
+        </div>
+      );
+    }
+
+    return (
+      <div className='contents-item'>
+        <img
+          src={lesson.image}
+          onClick={() => this.handleClickImage()}
+        />
+        <p>{lesson.name}</p>
+        {modal}
       </div>
     );
   }
